@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios'
 
 export const SignUp = () => {
   const [formData,setFormData] = useState({
@@ -15,7 +16,7 @@ export const SignUp = () => {
   const formHandler = async(e)=>{
     try{
       e.preventDefault()
-      const response = await fetch('http://localhost:3003/api/auth/signUp',formData)
+      const response = await axios.post('http://localhost:3003/api/auth/signUp',formData)
       console.log(response)
       setFormData({username:'',email:'',password:''})
     }catch{
